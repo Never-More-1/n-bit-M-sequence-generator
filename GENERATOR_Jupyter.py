@@ -7,7 +7,7 @@ ADDRESS_RANGE = 0x1000
 mmio = MMIO(IP_BASE_ADDRESS, ADDRESS_RANGE)
 result = mmio.read(8) 
 print("CORE VERSION is 0x{0:03x}".format(result)) # 47465550
-IP_BASE = 0x41220000 # RGB светодиод
+IP_BASE = 0x41210000 # RGB светодиод
 RANGE = 0x1000
 DATA_OFFSET = 0x0
 TRISTATE_OFFSET = 0x4
