@@ -1,1 +1,1 @@
-"# n-bit-M-sequence-generator" 
+n-bit-M-sequence-generator 
