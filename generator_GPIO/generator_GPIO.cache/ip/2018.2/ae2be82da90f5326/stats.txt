@@ -1,0 +1,4 @@
+NumberHits:0
+Timestamp: Thu Jun 19 09:05:48 UTC 2025
+VLNV: xilinx.com:user:my_lfsr:1.0
+SynthRuntime: 22

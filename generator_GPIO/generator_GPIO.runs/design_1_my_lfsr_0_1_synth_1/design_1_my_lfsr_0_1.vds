@@ -1,0 +1,387 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Jun 19 14:09:07 2025
+# Process ID: 10948
+# Current directory: C:/Users/fors2/generator_GPIO/generator_GPIO.runs/design_1_my_lfsr_0_1_synth_1
+# Command line: vivado.exe -log design_1_my_lfsr_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_my_lfsr_0_1.tcl
+# Log file: C:/Users/fors2/generator_GPIO/generator_GPIO.runs/design_1_my_lfsr_0_1_synth_1/design_1_my_lfsr_0_1.vds
+# Journal file: C:/Users/fors2/generator_GPIO/generator_GPIO.runs/design_1_my_lfsr_0_1_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_my_lfsr_0_1.tcl -notrace
+Command: synth_design -top design_1_my_lfsr_0_1 -part xc7z010clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 17428 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 472.414 ; gain = 95.422
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_my_lfsr_0_1' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ip/design_1_my_lfsr_0_1/synth/design_1_my_lfsr_0_1.v:57]
+INFO: [Synth 8-6157] synthesizing module 'my_lfsr_v1_0' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:3]
+	Parameter ID bound to: 0 - type: integer 
+	Parameter C_s_axi_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_s_axi_ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter CORE_VERSION bound to: 32'b00000000000000000000000000000001 
+	Parameter CORE_MAGIC bound to: 1195791696 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'LFSR9' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/LFSR16.sv:3]
+	Parameter N bound to: 9 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'LFSR9' (1#1) [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/LFSR16.sv:3]
+WARNING: [Synth 8-689] width (32) of port connection 'INIT' does not match port width (1) of module 'LFSR9' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:66]
+WARNING: [Synth 8-689] width (32) of port connection 'GO' does not match port width (1) of module 'LFSR9' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:67]
+WARNING: [Synth 8-689] width (32) of port connection 'SEED' does not match port width (9) of module 'LFSR9' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:68]
+WARNING: [Synth 8-689] width (32) of port connection 'Q' does not match port width (9) of module 'LFSR9' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:69]
+INFO: [Synth 8-6157] synthesizing module 'up_axi' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/up_axi.v:2]
+	Parameter AXI_ADDRESS_WIDTH bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'up_axi' (2#1) [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/up_axi.v:2]
+WARNING: [Synth 8-689] width (16) of port connection 'up_axi_awaddr' does not match port width (10) of module 'up_axi' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:78]
+WARNING: [Synth 8-689] width (16) of port connection 'up_axi_araddr' does not match port width (10) of module 'up_axi' [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:88]
+INFO: [Synth 8-6155] done synthesizing module 'my_lfsr_v1_0' (3#1) [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ipshared/74ac/hdl/my_lfsr_v1_0.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_my_lfsr_0_1' (4#1) [c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ip/design_1_my_lfsr_0_1/synth/design_1_my_lfsr_0_1.v:57]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_awaddr[1]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_awaddr[0]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_wstrb[3]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_wstrb[2]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_wstrb[1]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_wstrb[0]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_araddr[1]
+WARNING: [Synth 8-3331] design up_axi has unconnected port up_axi_araddr[0]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[15]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[14]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[13]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[12]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[11]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awaddr[10]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awprot[2]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awprot[1]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_awprot[0]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[15]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[14]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[13]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[12]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[11]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_araddr[10]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_arprot[2]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_arprot[1]
+WARNING: [Synth 8-3331] design my_lfsr_v1_0 has unconnected port s_axi_arprot[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 526.551 ; gain = 149.559
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 526.551 ; gain = 149.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 526.551 ; gain = 149.559
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Constraints 18-5210] No constraint will be written out.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.081 . Memory (MB): peak = 843.668 ; gain = 2.547
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 843.668 ; gain = 466.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 843.668 ; gain = 466.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 843.668 ; gain = 466.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 843.668 ; gain = 466.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 2     
++---XORs : 
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 18    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 23    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module LFSR9 
+Detailed RTL Component Info : 
++---XORs : 
+	   3 Input      1 Bit         XORs := 1     
++---Registers : 
+	                9 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module up_axi 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 20    
+Module my_lfsr_v1_0 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 4     
+	                9 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-3917] design design_1_my_lfsr_0_1 has port s_axi_bresp[1] driven by constant 0
+INFO: [Synth 8-3917] design design_1_my_lfsr_0_1 has port s_axi_bresp[0] driven by constant 0
+INFO: [Synth 8-3917] design design_1_my_lfsr_0_1 has port s_axi_rresp[1] driven by constant 0
+INFO: [Synth 8-3917] design design_1_my_lfsr_0_1 has port s_axi_rresp[0] driven by constant 0
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[15]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[14]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[13]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[12]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[11]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[10]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[1]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awaddr[0]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awprot[2]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awprot[1]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_awprot[0]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_wstrb[3]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_wstrb[2]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_wstrb[1]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_wstrb[0]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[15]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[14]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[13]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[12]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[11]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[10]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[1]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_araddr[0]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_arprot[2]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_arprot[1]
+WARNING: [Synth 8-3331] design design_1_my_lfsr_0_1 has unconnected port s_axi_arprot[0]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 843.668 ; gain = 466.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 853.645 ; gain = 476.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 853.867 ; gain = 476.875
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5365] Flop inst/up_resetn_reg is being inverted and renamed to inst/up_resetn_reg_inv.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT1 |     3|
+|2     |LUT2 |     4|
+|3     |LUT3 |    16|
+|4     |LUT4 |     7|
+|5     |LUT5 |    19|
+|6     |LUT6 |    94|
+|7     |FDRE |   285|
+|8     |FDSE |     1|
++------+-----+------+
+
+Report Instance Areas: 
++------+-------------+-------------+------+
+|      |Instance     |Module       |Cells |
++------+-------------+-------------+------+
+|1     |top          |             |   429|
+|2     |  inst       |my_lfsr_v1_0 |   429|
+|3     |    i_up_axi |up_axi       |   264|
+|4     |    my_lfsr9 |LFSR9        |    25|
++------+-------------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 873.965 ; gain = 496.973
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 26 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 873.965 ; gain = 179.855
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 873.965 ; gain = 496.973
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 59 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:25 . Memory (MB): peak = 878.363 ; gain = 512.848
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/fors2/generator_GPIO/generator_GPIO.runs/design_1_my_lfsr_0_1_synth_1/design_1_my_lfsr_0_1.dcp' has been generated.
+INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP c:/Users/fors2/generator_GPIO/generator_GPIO.srcs/sources_1/bd/design_1/ip/design_1_my_lfsr_0_1/design_1_my_lfsr_0_1.xci
+INFO: [Coretcl 2-1174] Renamed 3 cell refs.
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/fors2/generator_GPIO/generator_GPIO.runs/design_1_my_lfsr_0_1_synth_1/design_1_my_lfsr_0_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_my_lfsr_0_1_utilization_synth.rpt -pb design_1_my_lfsr_0_1_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 878.363 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Jun 19 14:09:37 2025...
