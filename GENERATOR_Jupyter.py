@@ -1,67 +1,74 @@
+import re
+import numpy as np
+import matplotlib.pyplot as plt
 from pynq.overlay import Overlay
 from pynq import MMIO
 from time import sleep
-platform = Overlay("test.bit")
+from collections import Counter
+
+platform = Overlay("LFSR_9.bit")
 IP_BASE_ADDRESS = 0x43C00000
 ADDRESS_RANGE = 0x1000
 mmio = MMIO(IP_BASE_ADDRESS, ADDRESS_RANGE)
-result = mmio.read(8) 
-print("CORE VERSION is 0x{0:03x}".format(result)) # 47465550
-IP_BASE = 0x41210000 # RGB светодиод
+
+IP_BASE = 0x41220000 # RGB светодиод
 RANGE = 0x1000
 DATA_OFFSET = 0x0
 TRISTATE_OFFSET = 0x4
-mm = MMIO(IP_BASE,RANGE)
-mm.write(TRISTATE_OFFSET, 0x0) #Все GPIO выходы
-mmio.write(3*4, 0x1) # SEED = 0000000000001
+
+mmio.write(3*4, 0xf) # SEED = 000001111
 sleep(1)
 seed = mmio.read(3*4)
-print("SEED is 0x{0:03x}".format(seed))
+print("SEED is 0x{0:03x}\n".format(seed))
 mmio.write(4*4, 0x1) # INIT = 1
-mm.write(DATA_OFFSET, 0x7)
+
 sleep(1)
+
+test = [None] * (2 ** 9 - 1)
+
 mmio.write(4*4, 0x0) # INIT = 0
-mmio.write(5*4, 0x1) # GO = 1
-mmio.write(5*4, 0x0) # GO = 0
+
 result = mmio.read(6*4)
 print("LFSR is 0x{0:03x}".format(result))
+test[0] = result
+
+count = 0
 i = 0
-mmio.write(5*4, 0x1) # GO = 1
-mmio.write(5*4, 0x0) # GO = 0
-result = mmio.read(6*4)
-print("LFSR is 0x{0:03x}".format(result))
-while (result != seed):        
+finish = 0
+while(finish != 1):
+    i += 1
     mmio.write(5*4, 0x1) # GO = 1
     mmio.write(5*4, 0x0) # GO = 0
-    i += 1
     result = mmio.read(6*4)
     print("LFSR is 0x{0:03x}".format(result))
-    mm.write(DATA_OFFSET, 0x5)
+
+    if(result == seed):
+      finish = 1     
+    else:
+        test[i] = result
+
+print("\nNumber of iterations: ", i)
 
 #Histogram of the distribution of symbols sequence (test 1)
-plt.hist(test, bins=1000, color = 'black')
-plt.title("Гистограмма распределения символов последовательности")
-plt.xlabel("Значения")
-plt.ylabel("Частота")
-plt.show()
+plt.figure(figsize=(20, 5))
+plt.hist(test,color = 'black', edgecolor = 'white', bins = int(512))
+plt.title('Гистограмма')
 
 #Histogram of distribution on the plane (test 2)
 size = 2**9  
 arrayOut = np.zeros((size+1, size+1))
 
-for i in range(0, len(test)-1,2):  
+for i in range(0, len(test)-1,1):  
     arrayOut[test[i],test[i+1]] += 1
 
 plt.figure(figsize=(10, 5))
 plt.pcolor(arrayOut)
 plt.colorbar()
-plt.title("Distribution on the plane")
+plt.title("Распределение на плоскости")
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.grid(False)
-mm.write(DATA_OFFSET, 0x2)
 plt.show()
-mm.write(DATA_OFFSET, 0x0)
 
 #Graphical check of a series of symbols (test 3)
 def count_pattern(number, pattern):
@@ -130,20 +137,17 @@ counts_3 = {
 fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(10, 10))
 
 ax1.bar(counts_1.keys(), counts_1.values(), color='blue')
-# ax1.set_title('1-symbol patterns')
-ax1.set_ylabel('Count')
+ax1.set_ylabel('Количество')
 for i, v in enumerate(counts_1.values()):
     ax1.text(i, v + 0.5, str(v), ha='center')
 
 ax2.bar(counts_2.keys(), counts_2.values(), color='red')
-# ax2.set_title('2-symbol patterns')
-ax2.set_ylabel('Count')
+ax2.set_ylabel('Количество')
 for i, v in enumerate(counts_2.values()):
     ax2.text(i, v + 0.5, str(v), ha='center')
 
 ax3.bar(counts_3.keys(), counts_3.values(), color='green')
-# ax3.set_title('3-symbol patterns')
-ax3.set_ylabel('Count')
+ax3.set_ylabel('Количество')
 for i, v in enumerate(counts_3.values()):
     ax3.text(i, v + 0.5, str(v), ha='center')
 
@@ -157,7 +161,7 @@ def find_monotonic_segments(sequence):
     
     segments = []
     start = 0
-    direction = 0 
+    direction = 0  # 0 = constant, 1 = increasing, -1 = decreasing
     
     for i in range(1, len(sequence)):
         current_dir = 0
@@ -185,32 +189,45 @@ def analyze_monotonicity(sequence):
 def plot_monotonic_segments(sequence):
     num_segments, lengths = analyze_monotonicity(sequence)
     length_counts = Counter(lengths)
-    print(length_counts)
-    plt.figure(figsize=(10, 15))
-    plt.bar(length_counts.keys(), length_counts.values())
-    plt.xlabel('Segment length')
-    plt.ylabel('Number of segments')
-    plt.grid(True)
+    
+    sorted_lengths = sorted(length_counts.items())
+    x_values = [x[0] for x in sorted_lengths]
+    y_values = [x[1] for x in sorted_lengths]
+    
+    plt.figure(figsize=(10, 6))
+    bars = plt.bar(x_values, y_values)
+    
+    for bar in bars:
+        height = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width()/2., height, f'{int(height)}', ha='center', va='bottom', fontsize=10)
+    
+    plt.xlabel('Длина сегментов', fontsize=12)
+    plt.ylabel('Количество сегментов', fontsize=12)
+    plt.title("Распределение длин монотонных сегментов", fontsize=14)
+    plt.xticks(x_values) 
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
     plt.show()
-
 plot_monotonic_segments(test)
 
 #Autocorrelation (test 5)
-n = len(test)
-    autocorr = []
+def check_autocorrelation(sequence):
 
+    n = len(sequence)
+    autocorr = []
+    
     for shift in range(n):
         sum_corr = 0
         for i in range(n):
-            sum_corr += test[i] * test[(i + shift) % n]
+            sum_corr += sequence[i] * sequence[(i + shift) % n]
         autocorr.append(sum_corr)
-
+    
     autocorr = [x / n for x in autocorr]
-
+    
     plt.figure(figsize=(10, 5))
     plt.plot(autocorr, 'o-')
-    plt.title("Autocorrelation")
-    plt.xlabel("Shift")
-    plt.ylabel("Autocorrelation")
+    plt.title("АКФ")
     plt.grid(True)
     plt.show()
+    
+check_autocorrelation(test)
